@@ -9,7 +9,7 @@ func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
 		DataSourcesMap: map[string]*schema.Resource{},
 		ResourcesMap: map[string]*schema.Resource{
-			"site": resourceSite(),
+			"nearlyfreespeech_site": resourceSite(),
 		},
 	}
 }
