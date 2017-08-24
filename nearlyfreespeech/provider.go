@@ -7,8 +7,11 @@ import (
 
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
-		DataSourcesMap: map[string]*schema.Resource{},
+		DataSourcesMap: map[string]*schema.Resource{
+			"nearlyfreespeech_account": dataSourceAccount(),
+		},
 		ResourcesMap: map[string]*schema.Resource{
+			"nearlyfreespeech_account": resourceAccount(),
 			"nearlyfreespeech_site": resourceSite(),
 		},
 	}

@@ -21,15 +21,15 @@ func resourceSite() *schema.Resource {
 	}
 }
 
-func resourceSiteRead(d *schema.ResourceData, meta interface{}) error {
-	// sourceDir := d.Get("source_dir").(string)
-	// d.setId("..")
-	return nil
-}
-
 func resourceSiteCreate(d *schema.ResourceData, meta interface{}) error {
 	// sourceDir := d.Get("source_dir").(string)
 	// d.SetId(hash)
+	return nil
+}
+
+func resourceSiteRead(d *schema.ResourceData, meta interface{}) error {
+	// sourceDir := d.Get("source_dir").(string)
+	// d.setId("..")
 	return nil
 }
 
