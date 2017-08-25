@@ -34,3 +34,21 @@ func setupProvider(r *schema.ResourceData) (interface{}, error) {
 		client: client,
 	}, nil
 }
+
+// getConfig is designed to be used off the `meta` param
+func getConfig(meta interface{}) (*config, error) {
+	cfg, ok := meta.(*config)
+	if !ok {
+		return nil, errors.New("error - nfs provider failed reading config")
+	}
+	return cfg, nil
+}
+
+// getClient is designed to return the *nfs.Client back from the provider config
+func getClient(meta interface{}) (*nfs.Client, error) {
+	cfg, err := getConfig(meta)
+	if err != nil {
+		return nil, err
+	}
+	return cfg.client, nil
+}

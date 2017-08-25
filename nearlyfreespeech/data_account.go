@@ -25,7 +25,12 @@ func dataSourceAccount() *schema.Resource {
 }
 
 func dataSourceAccountRead(d *schema.ResourceData, meta interface{}) error {
-	status, err := nfs.GetAccountStatus(meta.(*config).client)
+	c, err := getClient(meta)
+	if err != nil {
+		return err
+	}
+
+	status, err := nfs.GetAccountStatus(c)
 	if err != nil {
 		return err
 	}
