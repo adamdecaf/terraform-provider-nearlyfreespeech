@@ -1,6 +1,7 @@
 package nearlyfreespeech
 
 import (
+	nfs "github.com/adamdecaf/go-nfs"
 	"github.com/hashicorp/terraform/helper/schema"
 )
 
@@ -24,7 +25,14 @@ func dataSourceAccount() *schema.Resource {
 }
 
 func dataSourceAccountRead(d *schema.ResourceData, meta interface{}) error {
-	// d.Set("rendered", rendered)
+	status, err := nfs.GetAccountStatus(meta.(*config).client)
+	if err != nil {
+		return err
+	}
+
+	d.SetId(d.Get("number").(string)) // TODO(adam): better
 	// d.SetId(hash(rendered))
+	d.Set("status", status)
+
 	return nil
 }
