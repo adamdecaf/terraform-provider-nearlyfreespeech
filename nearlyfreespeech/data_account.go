@@ -10,13 +10,13 @@ func dataSourceAccount() *schema.Resource {
 		Read: dataSourceAccountRead,
 		Schema: map[string]*schema.Schema{
 			"number": {
-				Type: schema.TypeString,
+				Type:        schema.TypeString,
 				Description: "account number (XXXX-XXXXXXXX)",
-				Required: true,
-				ForceNew: true,
+				Required:    true,
+				ForceNew:    true,
 			},
 			"status": &schema.Schema{
-				Type: schema.TypeString,
+				Type:        schema.TypeString,
 				Description: "Status of NFS account",
 				Computed:    true,
 			},
@@ -30,13 +30,15 @@ func dataSourceAccountRead(d *schema.ResourceData, meta interface{}) error {
 		return err
 	}
 
+	// set state id
+	d.SetId(d.Get("number").(string)) // TODO(adam): better
+	// d.SetId(hash(rendered))
+
+	// status
 	status, err := nfs.GetAccountStatus(c)
 	if err != nil {
 		return err
 	}
-
-	d.SetId(d.Get("number").(string)) // TODO(adam): better
-	// d.SetId(hash(rendered))
 	d.Set("status", status)
 
 	return nil

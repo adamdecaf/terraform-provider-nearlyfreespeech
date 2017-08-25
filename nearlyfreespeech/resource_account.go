@@ -13,13 +13,13 @@ func resourceAccount() *schema.Resource {
 
 		Schema: map[string]*schema.Schema{
 			"number": {
-				Type: schema.TypeString,
+				Type:        schema.TypeString,
 				Description: "account number (XXXX-XXXXXXXX)",
-				Required: true,
-				ForceNew: true,
+				Required:    true,
+				ForceNew:    true,
 			},
 			"balance_warnings": {
-				Type: schema.TypeList,
+				Type:        schema.TypeList,
 				Description: "balance amounts to trigger warnings",
 				Elem: &schema.Schema{
 					Type: schema.TypeString,
@@ -29,11 +29,11 @@ func resourceAccount() *schema.Resource {
 				ForceNew: false,
 			},
 			"friendly_name": {
-				Type: schema.TypeString,
+				Type:        schema.TypeString,
 				Description: "friendly name for account",
-				Required: false,
-				Optional: true,
-				ForceNew: false,
+				Required:    false,
+				Optional:    true,
+				ForceNew:    false,
 			},
 		},
 	}

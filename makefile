@@ -1,7 +1,8 @@
 default: build
 
 vet:
-	go fmt github.com/adamdecaf/terraform-provider-nearlyfreespeech
+	@go fmt github.com/adamdecaf/terraform-provider-nearlyfreespeech
+	go fmt github.com/adamdecaf/terraform-provider-nearlyfreespeech/nearlyfreespeech
 	go tool vet .
 
 dev: vet

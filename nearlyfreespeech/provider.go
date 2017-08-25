@@ -16,14 +16,14 @@ func Provider() terraform.ResourceProvider {
 			},
 			// TODO(adam): rename to account_number ?
 			"account_id": &schema.Schema{
-				Type: schema.TypeString,
-				Optional: true,
+				Type:        schema.TypeString,
+				Optional:    true,
 				DefaultFunc: schema.EnvDefaultFunc("NFS_ACCOUNT_ID", nil),
 				Description: "NearlyFreeSpeech account number",
 			},
 			"login": &schema.Schema{
-				Type: schema.TypeString,
-				Required: true,
+				Type:        schema.TypeString,
+				Required:    true,
 				DefaultFunc: schema.EnvDefaultFunc("NFS_LOGIN", nil),
 				Description: "NearlyFreeSpeech login",
 			},
@@ -33,7 +33,7 @@ func Provider() terraform.ResourceProvider {
 		},
 		ResourcesMap: map[string]*schema.Resource{
 			"nearlyfreespeech_account": resourceAccount(),
-			"nearlyfreespeech_site": resourceSite(),
+			"nearlyfreespeech_site":    resourceSite(),
 		},
 		ConfigureFunc: setupProvider,
 	}
